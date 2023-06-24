@@ -1,38 +1,103 @@
-.App {
-  text-align: center;
+*,*::before,*::after{
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+  margin:0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr auto;
+  grid-template-areas: 
+  "image sidebar"
+  "slider sidebar";
+  height: 91.8vh;
+  width: 100vw;
+  background-color: rgba(20, 20, 20, 0.95);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main-image{
+  margin:auto;
+  grid-area: image;
+  background-image: url("https://images.unsplash.com/photo-1593696954577-ab3d39317b97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8ZnJlZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=900&q=60");
+  width: 95%;
+  height: 95%;
+  background-position: top center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar{
+  grid-area: sidebar;
+  background-color: rgba(65, 65, 65, 0.85);
+  border-left: 1px solid black;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: stretch;
+
+}
+
+
+.sidebar-item{
   color: white;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: rgba(65, 65, 65, 0.85);
+  padding: 1rem;
+  position: relative;
+  transition: background-color 350ms;
 }
 
-.App-link {
-  color: #61dafb;
+.sidebar-item:hover ,.sidebar-item:focus{
+  background-color:  rgba(42, 42, 42, 0.9);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.sidebar-item.active{
+  background-color:  rgba(111, 111, 111, 0.85);
+}
+
+.sidebar-item::after{
+  content: '';
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  bottom: 0;
+  height: 1px;
+  background-color: rgb(255, 255, 255);
+}
+
+.sidebar-item:last-child:after{
+  display: none;
+}
+
+.slider-container{
+  grid-area: slider;
+  background-color: rgb(46, 49, 48);
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.slider{
+  width: 100%;
+  cursor: pointer;
+}
+
+.headings{
+  color: rgb(0, 187, 255);
+  background-color: rgb(0, 0, 66);
+  text-align: center;
+  font-size: 5vh;
+  width: 100vw;
+  /* font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+}
+
+.subheadings{
+  color: rgb(0, 187, 255);
+  background-color: rgb(0, 0, 66);
+  text-align: center;
+  padding-left: 9rem;
+  width: 100vw;
 }
